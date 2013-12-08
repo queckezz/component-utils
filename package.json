@@ -1,6 +1,6 @@
 {
   "name": "component-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "utils.js from component as a standalone module",
   "main": "index.js",
   "dependencies": {},
