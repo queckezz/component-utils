@@ -6,12 +6,12 @@
  * @api private
  */
 
-exports.fatal = function(){
-  console.error();
-  exports.error.apply(null, arguments);
-  console.error();
-  process.exit(1);
-};
+exports.fatal = function() {
+  console.error()
+  exports.error.apply(null, arguments)
+  console.error()
+  process.exit(1)
+}
 
 /**
  * Log the given `type` with `msg`.
@@ -21,13 +21,13 @@ exports.fatal = function(){
  * @api public
  */
 
-exports.log = function(type, msg, color){
-  color = color || '36';
-  var w = 10;
-  var len = Math.max(0, w - type.length);
-  var pad = Array(len + 1).join(' ');
-  console.log('  \033[' + color + 'm%s\033[m : \033[90m%s\033[m', pad + type, msg);
-};
+exports.log = function (type, msg, color) {
+  color = color || '36'
+  var w = 10
+  var len = Math.max(0, w - type.length)
+  var pad = Array(len + 1).join(' ')
+  console.log('  \033[' + color + 'm%s\033[m : \033[90m%s\033[m', pad + type, msg)
+}
 
 /**
  * Log warning message with `type` and `msg`.
@@ -37,9 +37,9 @@ exports.log = function(type, msg, color){
  * @api public
  */
 
-exports.warn = function(type, msg){
-  exports.log(type, msg, '33');
-};
+exports.warn = function (type, msg) {
+  exports.log(type, msg, '33')
+}
 
 /**
  * Output error message.
@@ -48,10 +48,21 @@ exports.warn = function(type, msg){
  * @api private
  */
 
-exports.error = function(msg){
-  var w = 10;
-  var type = 'error';
-  var len = Math.max(0, w - type.length);
-  var pad = Array(len + 1).join(' ');
-  console.error('  \033[31m%s\033[m : \033[90m%s\033[m', pad + type, msg);
+exports.error = function (msg) {
+  var w = 10
+  var type = 'error'
+  var len = Math.max(0, w - type.length)
+  var pad = Array(len + 1).join(' ')
+  console.error('  \033[31m%s\033[m : \033[90m%s\033[m', pad + type, msg)
 };
+
+/**
+ * Get bytes of `str`.
+ *
+ * @param {String} str
+ * @return {String}
+ */
+
+exports.bytes = function (str) {
+  return (Buffer.byteLength(str, 'utf-8') / 1024 | 0) + 'kb'
+}
